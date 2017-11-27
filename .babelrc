@@ -1,6 +1,6 @@
-// .babelrc
+// .babelrc with tree shaking
 {
-    "presets": ["react", "es2015"],
+    "presets": ["react", ["es2015", { "modules": false }]],
     "env":{
         "development":{
             "plugins": [

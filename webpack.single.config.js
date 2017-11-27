@@ -2,20 +2,21 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
 
 process.env.NODE_ENV = 'production';
 
 module.exports = {
-    entry:  __dirname + '/app/main.js',
+    entry: __dirname + '/app/main.js',
     output: {
-        path: __dirname + '/build',
+        path: path.resolve(__dirname,'build'),
         filename: '[name]-[hash:8].js',
-        chunkFilename:'chunk.[name].js'
+        chunkFilename: 'chunk.[name].js'
     },
     devtool: 'none',
     devServer: {
-        contentBase: './build',//本地服务器所加载的页面所在的目录
-        historyApiFallback: true,//不跳转
+        contentBase: path.resolve(__dirname,'build'), //本地服务器所加载的页面所在的目录
+        historyApiFallback: true, //不跳转
         inline: true,
         hot: true
     },
@@ -23,6 +24,7 @@ module.exports = {
         loaders: [
             {
                 test: /(\.jsx|\.js)$/,
+                
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader'
             },
@@ -42,10 +44,10 @@ module.exports = {
                 loader: 'style-loader!css-loader'
             },
             {
-              // 忽略bootstrap自带的字体文件
-              test: /\.(woff|woff2|svg|eot|ttf)$/,
-              include: /glyphicons/,
-              loader: 'null-loader',
+                // 忽略bootstrap自带的字体文件
+                test: /\.(woff|woff2|svg|eot|ttf)$/,
+                include: /glyphicons/,
+                loader: 'null-loader',
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
@@ -65,8 +67,8 @@ module.exports = {
     plugins: [
         // 去除 react 压缩报错
         new webpack.DefinePlugin({
-            "process.env": { 
-                NODE_ENV: JSON.stringify("production") 
+            "process.env": {
+                NODE_ENV: JSON.stringify("production")
             }
         }),
         new webpack.ProvidePlugin({
@@ -77,7 +79,7 @@ module.exports = {
         }),
         new webpack.BannerPlugin('By CS逍遥剑仙, www.csxiaoyao.com, QQ:1724338257'),
         new HtmlWebpackPlugin({
-            template: __dirname + '/app/index.tmpl.html'
+            template: path.resolve(__dirname,'app/index.tmpl.html')
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({
