@@ -7,7 +7,8 @@
     "start": "webpack",
     "test": "webpack --config ./webpack.config.js --progress",
     "server": "webpack-dev-server --open",
-    "build": "set NODE_ENV=production && webpack --config ./webpack.single.config.js --progress"
+    "build": "set NODE_ENV=production && webpack --config ./webpack.single.config.js --progress",
+    "analyse": "set NODE_ENV=production && webpack --config ./webpack.single.config.js --profile --json > stats.json"
   },
   "repository": {
     "type": "git",

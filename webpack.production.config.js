@@ -9,7 +9,7 @@ module.exports = {
     entry: {
         main: __dirname + '/app/main.js',
         admin: __dirname + '/app/admin.js',
-        vendor: ['jquery','bootstrap','react']
+        vendor: ['jquery','bootstrap','react','vue']
     },
     output: {
         path: __dirname + '/build',
@@ -100,7 +100,7 @@ module.exports = {
             // 输出的公共资源名称
             filename: 'common_[name].js',
             // minChunks: Infinity
-            minChunks: 3
+            minChunks: 2
         }),
         // new ExtractTextPlugin('css/[name].css?[contenthash]', { allChunks: true })
     ]
