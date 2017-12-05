@@ -929,4 +929,16 @@ module.exports = {
 	...
 };
 ```
+## 7. 其他
+### 7.1 tree shaking
+
+### 7.2 图表分析
+[http://webpack.github.io/analyse/](http://webpack.github.io/analyse/)
+[https://alexkuz.github.io/webpack-chart/](https://alexkuz.github.io/webpack-chart/)
+
+生成stats.json
+```shell
+$ npm run analyse
+```
+
 ![sunshine](http://www.csxiaoyao.com/src/img/sign.jpg)
