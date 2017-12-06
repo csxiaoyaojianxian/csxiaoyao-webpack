@@ -2,7 +2,7 @@
 style: ocean
 ---
 # Webpack总结 - csxiaoyao-webpack脚手架
-[TOC]
+[toc]
 > Write By CS逍遥剑仙
 > 我的主页: [www.csxiaoyao.com](http://www.csxiaoyao.com)
 > GitHub: [github.com/csxiaoyaojianxian](https://github.com/csxiaoyaojianxian)
