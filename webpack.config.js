@@ -18,7 +18,7 @@ module.exports = {
         rules: [
             {
                 test: /(\.jsx|\.js)$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /node_modules/,
                 loader: 'babel-loader'
             },
             {
@@ -51,7 +51,7 @@ module.exports = {
             },
             {
                 test: require.resolve("jquery"),
-                exclude: /(node_modules|bower_components)/,
+                exclude: /node_modules/,
                 loader: "expose?$!expose?jQuery"
             }
         ]
