@@ -9,7 +9,7 @@ module.exports = {
     },
     devtool: 'eval-source-map',
     devServer: {
-        contentBase: "./build",//本地服务器所加载的页面所在的目录
+        contentBase: "./build",
         historyApiFallback: true,//不跳转
         inline: true,
         hot: true
@@ -57,7 +57,6 @@ module.exports = {
         ]
     },
     plugins: [
-        /* 全局shimming */
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -65,7 +64,7 @@ module.exports = {
             'window.$': 'jquery'
         }),
         new HtmlWebpackPlugin({
-            template: __dirname + "/app/index.tmpl.html"// 创建插件实例，并传入相关参数
+            template: __dirname + "/app/index.tmpl.html"
         }),
         new webpack.HotModuleReplacementPlugin()// 热加载插件
     ]

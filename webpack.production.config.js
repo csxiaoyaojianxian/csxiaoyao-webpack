@@ -20,7 +20,7 @@ module.exports = {
     },
     devtool: 'none',
     devServer: {
-        contentBase: path.resolve(__dirname,'build'), //本地服务器所加载的页面所在的目录
+        contentBase: path.resolve(__dirname,'build'),
         historyApiFallback: true, //不跳转
         inline: true,
         hot: true
@@ -76,7 +76,7 @@ module.exports = {
         ]
     },
     plugins: [
-        // 去除 react 压缩报错
+        // 去除 react、vue 压缩报错
         new webpack.DefinePlugin({
             "process.env": {
                 NODE_ENV: JSON.stringify("production")
