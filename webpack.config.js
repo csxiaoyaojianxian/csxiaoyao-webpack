@@ -22,9 +22,13 @@ module.exports = {
                 loader: 'babel-loader'
             },
             {
+                test:/\.vue$/,
+                loader:'vue-loader'
+            },
+            {
                 test: /\.css$/,
-                exclude: /node_modules|bootstrap/,
-                loader: 'style-loader!css-loader?modules!resolve-url-loader!postcss-loader'
+                exclude: /node_modules|bootstrap|mint-ui/,
+                loader: 'style-loader!css-loader?minimize&modules!resolve-url-loader!postcss-loader'
             },
             {
                 test: /\.less$/,
@@ -36,14 +40,14 @@ module.exports = {
                 loader: 'style-loader!css-loader'
             },
             {
-              // 忽略bootstrap自带的字体文件
-              test: /\.(woff|woff2|svg|eot|ttf)$/,
-              include: /glyphicons/,
-              loader: 'null-loader',
+                // 忽略bootstrap自带的字体文件
+                test: /\.(woff|woff2|svg|eot|ttf)$/,
+                include: /glyphicons/,
+                loader: 'null-loader',
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
-                loader: 'url-loader?limit=20480&name=images/[hash:8].[name].[ext]'
+                loader: 'url-loader?limit=10240&name=images/[name]-[hash:8].[ext]'
             },
             {
                 test: /\.(tpl|ejs)$/,
