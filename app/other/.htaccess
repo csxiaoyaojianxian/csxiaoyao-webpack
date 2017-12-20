@@ -1,8 +1,41 @@
-# 开启 rewrite 功能
-Options +FollowSymlinks
+# 保护htaccess
+<Files ~ "^.(htaccess|htpasswd)$">
+deny from all
+</Files>
+
+# 设置时区
+SetEnv TZ Asia/Shanghai
+
+# 隐藏目录
+Options -Indexes
+
+# 图片缓存
+<FilesMatch ".(gif|jpg|jpeg|png|ico)$">
+Header set Cache-Control "max-age=600"
+</FilesMatch>
+
+# 自定义错误页
+ErrorDocument 404 /pages/404.html
+
+# URL重写 restful
 RewriteEngine on
+RewriteRule ^demo/(\S+)/([0-9]+)$   index.php/demo/$1?id=$2
+RewriteRule ^demo/(\S+)$   index.php/demo/$1
+# RewriteRule ^(.*) http://www.csxiaoyao.com/$1 [R=301,L]
 
-# 如果访问的文件或目录不是真实存在，分发请求至 index.php
+# WWW域名重定向
+RewriteCond %{HTTP_HOST} ^(csxiaoyao\.com)(:80)? [NC]
 
-RewriteRule ^demo/getnew/([0-9]+)$   index.php/demo/getnew?id=$1 [nc,qsa]
-RewriteRule ^demo/(\S+)$   index.php/demo/$1 [nc,qsa]
+# 缺省页
+DirectoryIndex index.html index.htm index.php
+
+# 重定向 301 302   
+Redirect permanent / http://www.csxiaoyao.com
+Redirect temp /old.html http://www.csxiaoyao.com/index.html
+order deny,allow
+
+# 图片防盗链
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?csxiaoyao.com(/)?.*$     [NC]
+RewriteRule .*\.(gif|jpg|jpeg|bmp|png)$ http://www.csxiaoyao.cn/src/logo.png [R,NC,L]
