@@ -1,17 +1,5 @@
-// .babelrc with tree shaking
 {
-    "presets": ["react", ["es2015", { "modules": false }]],
-    "env":{
-        "development":{
-            "plugins": [
-                ["react-transform",{
-                    "transforms": [{
-                        "transform": "react-transform-hmr",
-                        "imports": ["react"],
-                        "locals": ["module"]
-                    }]
-                }]
-            ]
-        }
-    }
+  "presets": [["es2015", {"modules": false}], "stage-2"],
+  "plugins": ["transform-runtime"],
+  "comments": false
 }
